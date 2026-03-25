@@ -39,13 +39,15 @@ A suíte foi desenhada para atingir **100% de Cobertura de Decisão (Branch Cove
 
 ## 4. Análise de Adequação da Suíte
 
-> **A suíte pode ser considerada adequada?**
-> **Sim.** A suíte é adequada pois atende a todos os requisitos da APS: cobre os casos de `APPROVED`, `MANUAL_REVIEW`, múltiplos motivos de `REJECTED` e `INVALID_INPUT`. Além disso, a combinação de técnicas funcionais e estruturais garante que não existam caminhos mortos no código.
+**A suíte pode ser considerada adequada?**
 
-> **Que tipos de falhas ainda poderiam passar despercebidos?**
-> 1. **Erros de Tipagem:** O Python não impede a entrada de Strings no lugar de números (ex: idade="dezoito"), o que causaria erro de parada.
-> 2. **Precisão Numérica:** Valores com muitas casas decimais (ex: `6.9999999`) podem variar conforme a precisão do processador.
-> 3. **Paradoxo do Pesticida:** Se a especificação original da regra de negócio estiver errada (ex: se o cliente queria idade mínima 17 e no código está 16), os testes passarão, mas o software estará incorreto perante o cliente.
+**Sim.** A suíte é adequada pois atende a todos os requisitos da APS: cobre os casos de `APPROVED`, `MANUAL_REVIEW`, múltiplos motivos de `REJECTED` e `INVALID_INPUT`. Além disso, a combinação de técnicas funcionais e estruturais garante que não existam caminhos mortos no código.
+
+**Que tipos de falhas ainda poderiam passar despercebidos?**
+
+1. **Erros de Tipagem:** O Python não impede a entrada de Strings no lugar de números (ex: idade="dezoito"), o que causaria erro de parada.
+2. **Precisão Numérica:** Valores com muitas casas decimais (ex: `6.9999999`) podem variar conforme a precisão do processador.
+3. **Paradoxo do Pesticida:** Se a especificação original da regra de negócio estiver errada (ex: se o cliente queria idade mínima 17 e no código está 16), os testes passarão, mas o software estará incorreto perante o cliente.
 
 ---
 
