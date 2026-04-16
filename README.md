@@ -1,4 +1,4 @@
-# Relatório de Testes: Scholarship Eligibility Evaluator
+# Test Strategy and Automated Test Suite – Scholarship Eligibility Evaluator
 
 ## 1. Escolha Tecnológica
 * **Linguagem:** `Python 3.11`
