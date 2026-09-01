@@ -1,3 +1,4 @@
+import math
 from dataclasses import dataclass
 from enum import Enum
 from typing import List
@@ -22,7 +23,13 @@ def evaluate_scholarship(
     has_required_courses: bool,
     disciplinary_record: bool
 ) -> EvaluationResult:
-    _validate_inputs(gpa, attendance_rate)
+    _validate_inputs(
+        age=age,
+        gpa=gpa,
+        attendance_rate=attendance_rate,
+        has_required_courses=has_required_courses,
+        disciplinary_record=disciplinary_record,
+    )
 
     rejection_reasons = []
     review_reasons = []
@@ -72,12 +79,42 @@ def evaluate_scholarship(
     )
 
 
-def _validate_inputs(gpa: float, attendance_rate: float) -> None:
+def _validate_inputs(
+    age: int,
+    gpa: float,
+    attendance_rate: float,
+    has_required_courses: bool,
+    disciplinary_record: bool,
+) -> None:
+    if isinstance(age, bool) or not isinstance(age, int):
+        raise ValueError("Age must be an integer.")
+
+    if age < 0:
+        raise ValueError("Age must be a non-negative integer.")
+
+    if isinstance(gpa, bool) or not isinstance(gpa, (int, float)):
+        raise ValueError("GPA must be a number between 0 and 10.")
+
+    if not math.isfinite(float(gpa)):
+        raise ValueError("GPA must be a finite number.")
+
     if gpa < 0.0 or gpa > 10.0:
         raise ValueError("GPA must be between 0 and 10.")
 
+    if isinstance(attendance_rate, bool) or not isinstance(attendance_rate, (int, float)):
+        raise ValueError("Attendance rate must be a number between 0 and 100.")
+
+    if not math.isfinite(float(attendance_rate)):
+        raise ValueError("Attendance rate must be a finite number.")
+
     if attendance_rate < 0.0 or attendance_rate > 100.0:
         raise ValueError("Attendance rate must be between 0 and 100.")
+
+    if not isinstance(has_required_courses, bool):
+        raise ValueError("has_required_courses must be a boolean.")
+
+    if not isinstance(disciplinary_record, bool):
+        raise ValueError("disciplinary_record must be a boolean.")
 
 
 if __name__ == "__main__":
